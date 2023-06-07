@@ -1,15 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module2_HW5_06062023
 {
     internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Sign-in point.
+        /// </summary>
+        /// <param name="args">
+        /// passed args.
+        /// </param>
+        private static void Main(string[] args)
         {
+            Starter.Run();
+            UI.LoggingFinished();
+            Console.ReadKey();
         }
+
     }
 }
