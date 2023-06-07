@@ -13,6 +13,7 @@ namespace Module2_HW5_06062023
     using System.Threading;
     using Module2_HW5_06062023.Exeptions;
     using Module2_HW5_06062023.Interfaces;
+    using Module2_HW5_06062023.DateProvider;
 
     /// <summary>
     /// Starter.
@@ -30,9 +31,12 @@ namespace Module2_HW5_06062023
         /// </summary>
         public static void Run()
         {
-            // Actions action = new Actions();
             IActions action = new Actions();
             Logger logger = Logger.GetInstatce();
+
+            IDataProvider dataProvider = new FileService();
+            dataProvider.WriteIntoFile(logger);
+
 
             for (ushort i = 0; i < Counter; ++i)
             {
@@ -86,8 +90,6 @@ namespace Module2_HW5_06062023
                         break;
                 }
             }
-
-
 
             File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
         }

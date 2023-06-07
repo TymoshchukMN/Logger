@@ -1,18 +1,45 @@
 ﻿namespace Module2_HW5_06062023.DateProvider
 {
+    using System;
     using System.IO;
     using Module2_HW5_06062023.Interfaces;
     using Module2_HW5_06062023.Json;
     using Newtonsoft.Json;
 
-    internal class FileService : IDataProvider
+    public class FileService : IDataProvider
     {
         public void WriteIntoFile(Logger logger)
         {
-            var configFile = File.ReadAllText("ConfigLogFile.json");
+            const string ConfFilePath = "C:\\Users\\add\\source\\repos\\Module2_HW5_06062023\\Module2_HW5_06062023\\Json\\ConfigLogFile.json";
+
+            var configFile = File.ReadAllText(ConfFilePath);
             var configJSON = JsonConvert.DeserializeObject<Config>(configFile);
 
-            File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
+            string[] filesInDir = Directory.GetFiles(configJSON.Logger.DirectoryPath);
+
+            if (filesInDir.Length >= 3)
+            {
+                int indexOlderFile = 0;
+                DateTime creationTime = File.GetCreationTime(
+                    filesInDir[indexOlderFile]);
+
+                for (int i = 1; i < filesInDir.Length; i++)
+                {
+                    if (creationTime > File.GetCreationTime(
+                    filesInDir[i]))
+                    {
+                        creationTime = File.GetCreationTime(
+                        filesInDir[i]);
+                        indexOlderFile = i;
+                    }
+                }
+
+                File.Delete(filesInDir[indexOlderFile]);
+            }
+
+            File.WriteAllText(
+                configJSON.Logger.DirectoryPath,
+                string.Join(((char)10).ToString(), logger.Logs));
         }
     }
 }
