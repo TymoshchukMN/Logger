@@ -23,14 +23,13 @@ namespace Module2_HW5_06062023
         /// <returns>
         /// result.
         /// </returns>
-        public Result StartMethod()
+        public bool StartMethod()
         {
-            Result result = new Result(true, "Start method");
             Logger logger = Logger.GetInstatce();
-
+            string message = "Start method";
             logger.AddLog($"{DateTime.Now};{MessageType.Info}" +
-                            $";{result.Message} StartMethod");
-            return result;
+                            $";{message} StartMethod");
+            return true;
         }
 
         /// <summary>
@@ -42,12 +41,12 @@ namespace Module2_HW5_06062023
         public BusinessException SkippedMethod()
         {
             Logger logger = Logger.GetInstatce();
-            Result result = new Result(true, "Skipped ligic in method");
 
+            string message = "Skipped ligic in method";
             logger.AddLog($"{DateTime.Now};{MessageType.Warning}" +
-                          $";{result.Message} SkippedMethod");
+                          $";{message} SkippedMethod");
 
-            return new BusinessException(result.Message);
+            return new BusinessException(message);
         }
 
         /// <summary>
@@ -56,15 +55,15 @@ namespace Module2_HW5_06062023
         /// <returns>
         /// result.
         /// </returns>
-        public Result BrokenMethod()
+        public bool BrokenMethod()
         {
             Logger logger = Logger.GetInstatce();
-            Result result = new Result(false, "I broke a logic");
 
+            string message = "I broke a logic";
             logger.AddLog($"{DateTime.Now};{MessageType.Error}" +
-                          $";{result.Message} BrokenMethod");
+                          $";{message} BrokenMethod");
 
-            throw new Exception(result.Message);
+            throw new Exception(message);
         }
     }
 }

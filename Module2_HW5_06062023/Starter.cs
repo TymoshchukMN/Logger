@@ -38,12 +38,12 @@ namespace Module2_HW5_06062023
             {
                 ushort rndVol = (ushort)_random.Next(StartRand, StopRand);
 
-                Thread.Sleep(200);
+                Thread.Sleep(300);
 
                 switch (rndVol)
                 {
                     case 1:
-                        ResulFalseProcessing(logger, action.StartMethod());
+                        action.StartMethod();
                         UI.PrintLog(logger.Logs[i]);
                         break;
 
@@ -55,8 +55,10 @@ namespace Module2_HW5_06062023
                         }
                         catch (BusinessException ex)
                         {
-                            logger.AddLog($"{DateTime.Now};{MessageType.Warning}" +
-                                $": Action failed by a reason; Action got this custom Exception: {ex.Message}");
+                            logger.AddLog(
+                                $"{DateTime.Now};{MessageType.Warning}" +
+                                $": Action failed by a reason; Action got this " +
+                                $"custom Exception: {ex.Message}");
                         }
                         finally
                         {
@@ -64,6 +66,7 @@ namespace Module2_HW5_06062023
                         }
 
                         break;
+
                     case 3:
 
                         try
@@ -73,7 +76,7 @@ namespace Module2_HW5_06062023
                         catch (Exception ex)
                         {
                             logger.AddLog($"{DateTime.Now};{MessageType.Error}" +
-                                $": Action failed by reason:: {ex.Message}");
+                                $": Action failed by reason:; {ex.Message}");
                         }
                         finally
                         {
@@ -96,13 +99,13 @@ namespace Module2_HW5_06062023
         /// <param name="result">
         /// result class.
         /// </param>
-        private static void ResulFalseProcessing(Logger logger, Result result)
+        private static void ResulProcessing(
+            Logger logger,
+            MessageType messageType,
+            string message)
         {
-            if (!result.Status)
-            {
-                logger.AddLog($"{DateTime.Now};{MessageType.Error}" +
-                    $": Action failed by a reason; {result.Message}");
-            }
+            logger.AddLog($"{DateTime.Now};{MessageType.Error}" +
+                $": Action failed by a reason; {message}");
         }
     }
 }

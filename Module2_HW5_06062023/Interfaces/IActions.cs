@@ -4,10 +4,10 @@
 
     public interface IActions
     {
-        Result StartMethod();
+        bool StartMethod();
 
         BusinessException SkippedMethod();
 
-        Result BrokenMethod();
+        bool BrokenMethod();
     }
 }
