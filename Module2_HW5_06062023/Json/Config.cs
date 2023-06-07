@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Module2_HW5_06062023.Json
+﻿namespace Module2_HW5_06062023.Json
 {
-    internal class Config
+    public class Config
     {
+        public LoggerConfig Logger { get; set; }
     }
 }
