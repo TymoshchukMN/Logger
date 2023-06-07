@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Module2_HW5_06062023.DateProvider
+﻿namespace Module2_HW5_06062023.DateProvider
 {
-    internal class DataProvider
+    using System.IO;
+    using Module2_HW5_06062023.Interfaces;
+
+    internal class FileService : IDataProvider
     {
+        public void WriteIntoFile(Logger logger)
+        {
+            File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
+        }
     }
 }

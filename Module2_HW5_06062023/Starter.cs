@@ -87,25 +87,9 @@ namespace Module2_HW5_06062023
                 }
             }
 
-            File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
-        }
 
-        /// <summary>
-        /// Check if Result has false flag and add info to log.
-        /// </summary>
-        /// <param name="logger">
-        /// loger class.
-        /// </param>
-        /// <param name="result">
-        /// result class.
-        /// </param>
-        private static void ResulProcessing(
-            Logger logger,
-            MessageType messageType,
-            string message)
-        {
-            logger.AddLog($"{DateTime.Now};{MessageType.Error}" +
-                $": Action failed by a reason; {message}");
+
+            File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
         }
     }
 }

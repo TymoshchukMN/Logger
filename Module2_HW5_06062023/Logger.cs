@@ -13,7 +13,7 @@ namespace Module2_HW5_06062023
     /// <summary>
     /// Logger class.
     /// </summary>
-    internal class Logger
+    public class Logger
     {
         private const ushort ArrayLogSize = 200;
         private static Logger _logger;

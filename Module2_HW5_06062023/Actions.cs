@@ -46,7 +46,7 @@ namespace Module2_HW5_06062023
             logger.AddLog($"{DateTime.Now};{MessageType.Warning}" +
                           $";{message} SkippedMethod");
 
-            return new BusinessException(message);
+            throw new BusinessException(message);
         }
 
         /// <summary>

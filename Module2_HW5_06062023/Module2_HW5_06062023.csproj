@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions.cs" />
+    <Compile Include="DateProvider\FileService.cs" />
     <Compile Include="Exeptions\BusinessException.cs" />
     <Compile Include="Interfaces\IActions.cs" />
+    <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Program.cs" />
@@ -60,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ConfigLogFile.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
