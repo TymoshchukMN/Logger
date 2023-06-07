@@ -2,7 +2,6 @@
   "Logger": {
     "LineSeparator": 10,
     "DirectoryPath": "C:\\Users\\add\\source\\repos\\Module2_HW4_02062023\\Module2_HW4_02062023\\Logs",
-    "FileName": "log_",
     "FileExtension": ".txt"
   }
 }

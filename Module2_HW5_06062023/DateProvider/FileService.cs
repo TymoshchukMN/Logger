@@ -10,12 +10,15 @@
     {
         public void WriteIntoFile(Logger logger)
         {
-            const string ConfFilePath = "C:\\Users\\add\\source\\repos\\Module2_HW5_06062023\\Module2_HW5_06062023\\Json\\ConfigLogFile.json";
+            const string ConfFilePath = "C:\\Users\\add\\source\\repos" +
+                "\\Module2_HW5_06062023\\Module2_HW5_06062023\\Json" +
+                "\\ConfigLogFile.json";
 
             var configFile = File.ReadAllText(ConfFilePath);
             var configJSON = JsonConvert.DeserializeObject<Config>(configFile);
 
-            string[] filesInDir = Directory.GetFiles(configJSON.Logger.DirectoryPath);
+            string[] filesInDir = Directory.GetFiles(
+                configJSON.Logger.DirectoryPath);
 
             if (filesInDir.Length >= 3)
             {
@@ -37,9 +40,12 @@
                 File.Delete(filesInDir[indexOlderFile]);
             }
 
-            File.WriteAllText(
-                configJSON.Logger.DirectoryPath,
-                string.Join(((char)10).ToString(), logger.Logs));
+            string path = $"{configJSON.Logger.DirectoryPath}" +
+                $"\\{DateTime.Now.ToString("hh.mm.ss dd.MM.yyyy")}" +
+                $"{configJSON.Logger.FileExtension}";
+
+            File.WriteAllText(path,
+                string.Join(configJSON.Logger.LineSeparator.ToString(), logger.Logs));
         }
     }
 }
