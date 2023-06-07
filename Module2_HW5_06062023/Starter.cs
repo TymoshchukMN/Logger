@@ -34,15 +34,11 @@ namespace Module2_HW5_06062023
             IActions action = new Actions();
             Logger logger = Logger.GetInstatce();
 
-            IDataProvider dataProvider = new FileService();
-            dataProvider.WriteIntoFile(logger);
-
-
             for (ushort i = 0; i < Counter; ++i)
             {
                 ushort rndVol = (ushort)_random.Next(StartRand, StopRand);
 
-                Thread.Sleep(300);
+                //Thread.Sleep(300);
 
                 switch (rndVol)
                 {
@@ -91,7 +87,8 @@ namespace Module2_HW5_06062023
                 }
             }
 
-            File.WriteAllText("log.txt", string.Join(((char)10).ToString(), logger.Logs));
+            IDataProvider dataProvider = new FileService();
+            dataProvider.WriteIntoFile(logger);
         }
     }
 }

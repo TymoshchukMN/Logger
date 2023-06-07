@@ -44,8 +44,11 @@
                 $"\\{DateTime.Now.ToString("hh.mm.ss dd.MM.yyyy")}" +
                 $"{configJSON.Logger.FileExtension}";
 
-            File.WriteAllText(path,
-                string.Join(configJSON.Logger.LineSeparator.ToString(), logger.Logs));
+            File.WriteAllText(
+                path,
+                string.Join(
+                    configJSON.Logger.LineSeparator.ToString(),
+                    logger.Logs));
         }
     }
 }
